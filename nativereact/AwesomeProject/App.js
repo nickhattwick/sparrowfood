@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 var api = {
   getServer() {
-    var url = `https://facebook.github.io/react-native/movies.json`;
+    var url = `https://safe-ridge-73119.herokuapp.com/test`;
     return fetch(url)
     // .then((res) => {
     //   res.json();
@@ -34,7 +34,7 @@ export default class App extends React.Component {
     api.getServer().then((res) => {
       console.log("res in CWM: ", res);
       this.setState({
-        data: res
+        data: res._bodyText
       })
     });
   }
@@ -43,7 +43,7 @@ export default class App extends React.Component {
     console.log("Data from state ", this.state.data);
     return (
       <View style={styles.container}>
-        <Text>Hey, can you see this? {this.state.data}</Text>
+        <Text>Hey, can you see this?{this.state.data}</Text>
       </View>
     );
   }
